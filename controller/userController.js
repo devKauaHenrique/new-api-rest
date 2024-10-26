@@ -6,7 +6,7 @@ exports.create = async (req, res) => {   //async await (avisando que a função 
 
     try {                   //try e catch = promisse 
         const result = await pool.query(
-            'INSERT INTO users (name, document, email, birthday) VALUES ($1, $2, $3, $4) RETURNING *' 
+            'INSERT INTO users (name, document, email, birthday) VALUES ($1, $2, $3, $4) RETURNING *',
             [name, document, email, birthday]
         )
         res.status(201).json(result.rows[0]) // 201 = Resposta padrão de "Deu certo"
